@@ -63,6 +63,41 @@
   {% else %}
     <p>{{ _('There are currently no Showcase Admins.') }}</p>
   {% endif %}
+
+  <h3 class="page-heading">{{ _('Homepage Showcase') }}</h3>
+<div class="module-content">
+    <p>{{ _('Optional.') }}</p>
+    <p>{{ _('Define a showcase to be featured on the homepage.') }}</p>
+    <p>{{ _('This could be used to highlight a particular showcase.') }}</p>
+    <form class="dataset-form form-horizontal add-member-form" method='post'>
+      {{ h.csrf_input() if 'csrf_input' in h }}
+      <div class="row-fluid">
+        <div class="control-group control-medium">
+          <label class="control-label" for="showcase">
+            {{ _('Showcase') }}
+          </label>
+          <span>
+            {{ _('Define the main showcase') }}
+          </span>
+
+          <div class="controls">
+            <select id="showcase" name="showcase" class="control-medium">
+              <option value="">{{ _('Select a showcase') }}</option>
+              {% for showcase in c.showcases_list %}
+                <option value="{{ showcase['id'] }}">{{ showcase['title'] }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button class="btn btn-primary" type="submit" name="submit" >
+          {{ _('Set Showcase') }}
+        </button>
+      </div>
+
+
 {% endblock %}
 
 {% block secondary_content %}

@@ -539,6 +539,7 @@ def manage_showcase_admins():
         return tk.redirect_to(h.url_for(admins_route))
 
     tk.g.showcase_admins = tk.get_action('ckanext_showcase_admin_list')({},{})
+    tk.g.showcases_list = tk.get_action('ckanext_showcase_list')({}, {})
 
     return tk.render('admin/manage_showcase_admins.html')
 
